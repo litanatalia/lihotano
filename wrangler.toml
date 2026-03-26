@@ -1,0 +1,7 @@
+name = "hono-api"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+[vars]
+SUPABASE_URL = "https://txpanxseknvpoftoyrun.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4cGFueHNla252cG9mdG95cnVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4MTY0OTcsImV4cCI6MjA4OTM5MjQ5N30.MfkFQRJPyYnfuo-OurSYKLYG8FFkjy6aLIBzmARt_as"
