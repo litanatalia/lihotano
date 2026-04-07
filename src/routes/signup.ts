@@ -24,10 +24,11 @@ signupRoute.post('/', async (c) => {
     email: body.user_email,
     password: body.user_pass,
     options: {
-    data: {
-        display_name: body.display_name,
-        phone: body.user_phone
-        }
+      emailRedirectTo: 'https://hono-api.licloudtaflare.workers.dev/signup_verification/auth/callback',
+      data: {
+          display_name: body.display_name,
+          phone: body.user_phone
+          }
       }
     })
 
