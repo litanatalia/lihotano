@@ -1,4 +1,5 @@
 import { Hono } from 'hono'
+import { AppContext } from './types/hono'
 import { activityRoute } from './routes/activity'
 import { signupRoute } from './routes/signup'
 import { signupResendRoute } from './routes/signup_resend'
@@ -10,7 +11,7 @@ type Env = {
   SUPABASE_KEY: string
 }
 
-const app = new Hono<{ Bindings: Env }>()
+const app = new Hono<AppContext>()
 
 app.route('/activities', activityRoute)
 app.route('/signup', signupRoute)

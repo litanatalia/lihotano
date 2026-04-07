@@ -1,16 +1,13 @@
 import { Context, Next } from 'hono'
-import { createClient } from '@supabase/supabase-js'
+import { AppContext } from '../types/hono'
+import { createSupabaseClient } from '../lib/supabaseClient'
 
-type Env = {
-  SUPABASE_URL: string
-  SUPABASE_KEY: string
-}
+export const authMiddleware = async (
+  c: Context<AppContext>,
+  next: Next
+) => {
+  const supabase = createSupabaseClient(c.env)
 
-export const authMiddleware = async (c: Context<{ Bindings: Env }>, next: Next) => {
-    const supabase = createClient(
-        c.env.SUPABASE_URL,
-        c.env.SUPABASE_KEY
-    )
   const authHeader = c.req.header('Authorization')
 
   if (!authHeader) {
@@ -25,7 +22,7 @@ export const authMiddleware = async (c: Context<{ Bindings: Env }>, next: Next) 
     return c.json({ message: 'Invalid token' }, 401)
   }
 
-  // inject user ke context
+  // ✅ sekarang TypeScript ngerti
   c.set('user', data.user)
 
   await next()
